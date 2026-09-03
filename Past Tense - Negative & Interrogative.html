@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Interrogation - Past Tense</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Quicksand:wght@600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFF3E0;
+            color: #4A4A4A;
+            overflow: hidden;
+            font-size: 28px;
+        }
+
+        .cat-bg { position: absolute; font-size: 4rem; opacity: 0.15; z-index: -1; }
+        .c1 { top: 10%; left: 5%; }
+        .c2 { bottom: 20%; right: 10%; }
+        .c3 { top: 15%; right: 15%; }
+        .c4 { bottom: 10%; left: 20%; }
+
+        .slide {
+            display: none;
+            width: 90vw;
+            height: 80vh;
+            margin: 2vh auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .active-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-size: 3.5rem; color: #FF6B6B; margin-bottom: 10px; text-align: center; }
+        h2 { font-size: 2.5rem; color: #4ECDC4; margin-bottom: 20px; text-align: center; }
+        p { line-height: 1.6; text-align: center; }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        button {
+            background-color: #FFD166;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            color: #4A4A4A;
+        }
+
+        button:hover { background-color: #FF9F1C; color: white; transform: scale(1.05); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 100%; margin-top: 20px; }
+        
+        .box {
+            background: #F8F9FA;
+            padding: 20px;
+            border-radius: 20px;
+            border: 4px dashed #4ECDC4;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .box:hover { background: #E9ECEF; }
+        
+        .hidden-text { display: none; color: #FF6B6B; font-weight: bold; margin-top: 15px; font-size: 1.2rem; }
+
+        .grammar-part {
+            display: inline-block;
+            background: #FFE66D;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 900;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+
+        .grammar-label {
+            display: block;
+            font-size: 1.2rem;
+            color: #FF6B6B;
+            margin-top: 5px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .show-label .grammar-label { opacity: 1; }
+
+        .connectors-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        .connector-chip {
+            background: #4ECDC4;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cat-bg c1">🐈</div>
+    <div class="cat-bg c2">🐾</div>
+    <div class="cat-bg c3">🙀</div>
+    <div class="cat-bg c4">🐱</div>
+
+    <!-- SLIDE 1 -->
+    <div id="slide1" class="slide active-slide">
+        <h1>🕵️‍♀️ The Great Diamond Heist 💎</h1>
+        <h2>A Past Tense Investigation</h2>
+        <p style="font-size: 1.8rem; background: #FFE66D; padding: 20px; border-radius: 20px;">
+            "A diamond was stolen at 8.00 PM last night!<br>Are you the thief?" 🙀
+        </p>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div id="slide2" class="slide">
+        <h1>The Interrogation Room 🔦</h1>
+        <div class="grid-2">
+            <div style="background: #FFD166; padding: 30px; border-radius: 20px;">
+                <h2 style="color: #4A4A4A;">Question 1 (Action) 🏃‍♂️</h2>
+                <p style="font-size: 2rem; font-weight: bold;">"Did you steal the diamond?"</p>
+            </div>
+            <div style="background: #4ECDC4; padding: 30px; border-radius: 20px; color: white;">
+                <h2 style="color: white;">Question 2 (State/Location) 📍</h2>
+                <p style="font-size: 2rem; font-weight: bold;">"Were you at the museum last night?"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div id="slide3" class="slide">
+        <h1>Alibi Analysis 📝</h1>
+        <p>(Click the boxes to scan the answers!)</p>
+        <div class="grid-2">
+            <div class="box" onclick="toggleText('ans1')">
+                <p><strong>"No, I didn't steal it!"</strong></p>
+                <div id="ans1" class="hidden-text" style="color: #4ECDC4;">✅ CORRECT! (Negative Verbal)<br>'Didn't' is used, so the verb returns to Base Form (V1).</div>
+            </div>
+            <div class="box" onclick="toggleText('ans2')">
+                <p><strong>"I didn't stole it!"</strong></p>
+                <div id="ans2" class="hidden-text">❌ WRONG! (Double Past)<br>'Didn't' is already past tense, no need for another past verb like 'stole'.</div>
+            </div>
+            <div class="box" onclick="toggleText('ans3')">
+                <p><strong>"No, I wasn't at the museum!"</strong></p>
+                <div id="ans3" class="hidden-text" style="color: #4ECDC4;">✅ CORRECT! (Negative Nominal)<br>The question asks about location using 'were', so the answer must use 'was/were'.</div>
+            </div>
+            <div class="box" onclick="toggleText('ans4')">
+                <p><strong>"I wasn't steal it!"</strong></p>
+                <div id="ans4" class="hidden-text">❌ WRONG! (Mixed up!)<br>Error! 'Wasn't' is for nominal sentences. You cannot combine it with an action verb like 'steal'.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div id="slide4" class="slide">
+        <h1>Negative Sentence 🛑</h1>
+        <p>Click the boxes below to reveal the sentence structure!</p>
+        <div class="grid-2">
+            <div>
+                <h2 style="color: #FF9F1C;">ACTION (Verbal) 🏃‍♂️</h2>
+                <p>Use <strong>DIDN'T</strong> + Base Verb (V1)</p>
+                <div style="margin-top: 30px;">
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">I <span class="grammar-label">Subject</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">didn't <span class="grammar-label">Auxiliary (Negative)</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">steal <span class="grammar-label">Base Verb (Action)</span></div>
+                </div>
+            </div>
+            <div>
+                <h2 style="color: #FF9F1C;">STATE (Nominal) 📍</h2>
+                <p>Use <strong>WASN'T / WEREN'T</strong> (No Action Verb!)</p>
+                <div style="margin-top: 30px;">
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">He <span class="grammar-label">Subject</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">wasn't <span class="grammar-label">To Be Past (Negative)</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">happy <span class="grammar-label">Adjective / Noun</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div id="slide5" class="slide">
+        <h1>Interrogative Sentence ❓</h1>
+        <p>Click the boxes below to see the swapped positions!</p>
+        <div class="grid-2">
+            <div>
+                <h2 style="color: #FF6B6B;">ACTION (Verbal) 🏃‍♂️</h2>
+                <p>Put <strong>DID</strong> at the beginning!</p>
+                <div style="margin-top: 30px;">
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">Did <span class="grammar-label">Auxiliary (Question)</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">you <span class="grammar-label">Subject</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">play? <span class="grammar-label">Base Verb (Action)</span></div>
+                </div>
+            </div>
+            <div>
+                <h2 style="color: #FF6B6B;">STATE (Nominal) 📍</h2>
+                <p>Put <strong>WAS/WERE</strong> at the beginning!</p>
+                <div style="margin-top: 30px;">
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">Were <span class="grammar-label">To Be Past (Question)</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">you <span class="grammar-label">Subject</span></div>
+                    <div class="grammar-part" onclick="this.classList.toggle('show-label')">at home? <span class="grammar-label">Adverb of Place</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div id="slide6" class="slide">
+        <h1>👾 Fix The Glitch! 👾</h1>
+        <p style="font-size: 1.5rem;">There is an error in the timeline. Click the error to reveal the fix!</p>
+        
+        <div class="box" onclick="toggleText('q1')" style="margin-bottom: 15px; background: #FFD1DC;">
+            <p>1. The thief <strong>didn't stole</strong> the diamond. 💎</p>
+            <div id="q1" class="hidden-text" style="color: #4A4A4A;">✅ FIX: The thief <strong>didn't steal</strong> the diamond.</div>
+        </div>
+        
+        <div class="box" onclick="toggleText('q2')" style="margin-bottom: 15px; background: #BAFFC9;">
+            <p>2. <strong>You were</strong> at the crime scene? 🚔</p>
+            <div id="q2" class="hidden-text" style="color: #4A4A4A;">✅ FIX: <strong>Were you</strong> at the crime scene?</div>
+        </div>
+        
+        <div class="box" onclick="toggleText('q3')" style="margin-bottom: 15px; background: #BAE1FF;">
+            <p>3. <strong>Was</strong> the detectives lazy? 🕵️‍♂️</p>
+            <div id="q3" class="hidden-text" style="color: #4A4A4A;">✅ FIX: <strong>Were</strong> the detectives lazy? (Plural subject!)</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div id="slide7" class="slide">
+        <h1>🔗 Connectors of Sequence 🔗</h1>
+        <p style="font-size: 1.5rem;">The "glue" words to connect your Recount Text!</p>
+        <div class="connectors-container">
+            <div class="connector-chip">First</div>
+            <div class="connector-chip">Second</div>
+            <div class="connector-chip">Third</div>
+            <div class="connector-chip">Next</div>
+            <div class="connector-chip">Then</div>
+            <div class="connector-chip">After that</div>
+            <div class="connector-chip">Before</div>
+            <div class="connector-chip">Later</div>
+            <div class="connector-chip">Meanwhile</div>
+            <div class="connector-chip">Subsequently</div>
+            <div class="connector-chip">Firstly</div>
+            <div class="connector-chip">Secondly</div>
+            <div class="connector-chip">Thirdly</div>
+            <div class="connector-chip">First of all</div>
+            <div class="connector-chip">Soon</div>
+            <div class="connector-chip">By the time</div>
+            <div class="connector-chip">Eventually</div>
+            <div class="connector-chip">At last</div>
+            <div class="connector-chip">At the end</div>
+            <div class="connector-chip">In the end</div>
+            <div class="connector-chip">Finally</div>
+            <div class="connector-chip" style="background:#FF9F1C">In conclusion</div>
+            <div class="connector-chip" style="background:#FF9F1C">To summarise</div>
+            <div class="connector-chip" style="background:#FF6B6B">Furthermore</div>
+            <div class="connector-chip" style="background:#FF6B6B">Moreover</div>
+            <div class="connector-chip" style="background:#FF6B6B">In addition</div>
+            <div class="connector-chip" style="background:#FF6B6B">Also</div>
+            <div class="connector-chip" style="background:#FF6B6B">Another</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <button onclick="changeSlide(-1)">◀ Back</button>
+        <button onclick="changeSlide(1)">Next ▶</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+
+        function changeSlide(direction) {
+            document.getElementById('slide' + currentSlide).classList.remove('active-slide');
+            currentSlide += direction;
+            
+            if (currentSlide < 1) currentSlide = 1;
+            if (currentSlide > totalSlides) currentSlide = totalSlides;
+            
+            document.getElementById('slide' + currentSlide).classList.add('active-slide');
+        }
+
+        function toggleText(id) {
+            let element = document.getElementById(id);
+            if (element.style.display === "block") {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
